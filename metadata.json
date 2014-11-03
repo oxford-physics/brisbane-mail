@@ -1,0 +1,17 @@
+{
+  "name": "brisbane-mail",
+  "version": "0.1.0",
+  "author": "brisbane",
+  "summary": "Configure the sending of mail on the system",
+  "license": "Apache 2.0",
+  "source": "github",
+  "issues_url": "github",
+  "project_page": null,
+  "dependencies": [
+    {
+      "version_range": ">= 1.0.0",
+      "name": "puppetlabs-stdlib"
+    }
+  ]
+}
+
