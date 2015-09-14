@@ -37,22 +37,31 @@
 #
 class mail {
   ensure_packages ( ['sendmail'])
+   service{  sendmail:
+                   ensure => running,
+                   hasstatus => true,
+                   hasrestart => true,
+                   enable => true,
+                   require => Package['sendmail']
+        }
 
     @concat {'/etc/mail/sendmail.mc':
           owner => root,
           group => root,
           mode  => '0644',
+          notify => Service['sendmail']
    }
   realize Concat['/etc/mail/sendmail.mc']
   concat::fragment{'sendmail.mcbase':
           target  => "/etc/mail/sendmail.mc",
           content => template('mail/sendmail.mc'),
+          notify => Service['sendmail']
         }
 
 
         concat::fragment{"$name":
           target  => "/etc/mail/sendmail.mc",
-          content => "define(`SMART_HOST',`smtp.physics.ox.ac.uk')\n",
+          content => "define(`SMART_HOST',`smtp.ox.ac.uk')\n",
         }
 
 
