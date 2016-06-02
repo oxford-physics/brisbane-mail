@@ -36,7 +36,7 @@
 # Copyright 2014 Your name here, unless otherwise noted.
 #
 class mail {
-  ensure_packages ( ['sendmail'])
+  ensure_packages ( ['sendmail', 'sendmail-cf'])
    service{  sendmail:
                    ensure => running,
                    hasstatus => true,
